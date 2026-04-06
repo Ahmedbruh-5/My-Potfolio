@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.1rem !important;
+  line-height: 1.5;
 }
 
 code {
@@ -16,7 +17,7 @@ code {
 .main-container {
   position: relative;
   background-color: #0d1116;
-
+  background-image: radial-gradient(circle at top right, rgba(80, 0, 202, 0.14), transparent 40%);
 }
 
 a {
@@ -90,6 +91,29 @@ p, a, h1, h2, h3, h4, h5, label, button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.items-container > h1,
+.projects-container > h1,
+.skills-container > h1 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.8rem;
+}
+
+.items-container > h1::after,
+.projects-container > h1::after,
+.skills-container > h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 64px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5000ca 0%, #8f5bff 100%);
 }
 
 .light-mode {

@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
+import resumePdf from '../assets/resume/Ahmed_Aamir.pdf';
 
 function Contact() {
 
@@ -55,6 +56,31 @@ function Contact() {
         <div className="contact_wrapper">
           <h1>Contact Me</h1>
           <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
+          <div className="contact-actions">
+            <Button
+              className="resume-primary"
+              size="large"
+              variant="contained"
+              component="a"
+              href={resumePdf}
+              download
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download Resume
+            </Button>
+            <Button
+              className="resume-secondary"
+              size="large"
+              variant="outlined"
+              component="a"
+              href={resumePdf}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Resume
+            </Button>
+          </div>
           <Box
             ref={form}
             component="form"
@@ -103,7 +129,7 @@ function Contact() {
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
-            <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
+            <Button className="send-btn" variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
               Send
             </Button>
           </Box>

@@ -12,33 +12,35 @@ const labelsFirst = [
     "HTML5",
     "CSS3",
     "SASS",
-    "Flask",
-    "Python",
-    "SQL",
-    "PostgreSQL",
-    "Postman"
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "REST APIs",
+    "JWT/Auth",
+    "WebSockets"
 ];
 
 const labelsSecond = [
-    "Git",
-    "GitHub Actions",
+    "DigitalOcean",
+    "AWS SES",
     "Docker",
-    "AWS",
-    "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
+    "Nginx",
+    "PM2",
+    "GitHub Actions",
+    "Git",
+    "GitHub",
+    "CI/CD",
 ];
 
 const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+    "Python",
+    "LLM",
+    "AI Agent",
+    "OpenAI API",
+    "RAG",
+    "Unity",
+    "Drone Simulation",
 ];
 
 function Expertise() {
@@ -49,8 +51,12 @@ function Expertise() {
             <div className="skills-grid">
                 <div className="skill">
                     <FontAwesomeIcon icon={faReact} size="3x"/>
-                    <h3>Full Stack Web Development</h3>
-                    <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
+                    <h3>Full‑Stack MERN Development</h3>
+                    <p>
+                        I build end‑to‑end web apps across the MERN stack—clean, accessible frontends in React
+                        and robust backends with Node.js/Express, backed by MongoDB. I design REST APIs, handle
+                        authentication/authorization, real‑time features, and production‑ready architectures.
+                    </p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsFirst.map((label, index) => (
@@ -61,8 +67,12 @@ function Expertise() {
 
                 <div className="skill">
                     <FontAwesomeIcon icon={faDocker} size="3x"/>
-                    <h3>DevOps & Automation</h3>
-                    <p>Once the application is built, I help clients set up DevOps testing, CI/CD pipelines, and deployment automation to support the successful Go-Live.</p>
+                    <h3>Deployment & DevOps</h3>
+                    <p>
+                        I ship reliably with containerized deployments on <strong>DigitalOcean</strong> and leverage
+                        <strong> AWS</strong> services such as <strong>SES</strong> for email. I set up CI/CD, process
+                        managers, reverse proxies, and monitoring to keep apps scalable and resilient in production.
+                    </p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsSecond.map((label, index) => (
@@ -73,8 +83,13 @@ function Expertise() {
 
                 <div className="skill">
                     <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
+                    <h3>AI, Python & Simulation</h3>
+                    <p>
+                        I created <strong>PyVisual</strong>, a Python GUI drag‑and‑drop builder, and
+                        <strong> PySimVerse</strong>, a Unity‑based Python drone simulation. I also built
+                        <strong> PV Developer</strong>, an AI agent that writes Python logic for PyVisual—integrating LLMs to
+                        accelerate development and automate repetitive tasks.
+                    </p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsThird.map((label, index) => (

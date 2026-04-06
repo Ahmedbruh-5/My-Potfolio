@@ -1,6 +1,6 @@
 .vertical-timeline span {
     color: white;
-    font-family: 'Courier Prime', monospace;
+    font-family: "Lato", sans-serif;
 }
 
 .vertical-timeline p {
@@ -25,10 +25,22 @@
 
 .vertical-timeline-element .vertical-timeline-element-date {
     color: white;
+    opacity: 0.9;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .svg-inline--fa {
     color: white;
+}
+
+.vertical-timeline-element-content {
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.vertical-timeline-element-content p {
+    line-height: 1.55;
 }
 
 @media screen and (max-width: 1170px) {

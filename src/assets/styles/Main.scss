@@ -15,20 +15,28 @@
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    position: relative;
 }
 
 .about-section .content {
     text-align: left;
     z-index: 2;
+    max-width: 680px;
 
     .social_icons {
         display: flex;
         flex-direction: row;
-        gap: 10px;
+        gap: 12px;
         color: white;
 
         svg {
             font-size: 1.8em;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        a:hover svg {
+            transform: translateY(-2px);
+            opacity: 0.9;
         }
     }
 
@@ -37,23 +45,36 @@
     }
 
     p {
-        font-size: 1.5em;
+        font-size: clamp(1.1rem, 2vw, 1.5rem);
+        opacity: 0.92;
         margin-block-start: 0px;
         margin-block-end: 0px;
     }
 
     h1 {
-        font-size: 5em;
+        font-size: clamp(2.2rem, 7vw, 5rem);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
         margin-block-start: 0px;
         margin-block-end: 0px;
+    }
+
+    .hero-actions {
+        margin-top: 18px;
     }
 }
 
 .about-section .image-wrapper {
     z-index: 2;
     img {
-        width: 150px;
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        object-position: center;
+        border: 4px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
     }
 }
 
@@ -105,7 +126,7 @@
 
     @media (max-width:768px) {
         .about-section h1 {
-            font-size: 4em !important;
+            font-size: 3em !important;
             text-align: left;
         }
 
