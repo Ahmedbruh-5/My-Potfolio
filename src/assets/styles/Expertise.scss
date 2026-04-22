@@ -13,13 +13,29 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;
+    align-items: stretch;
 }
   
 .skills-container .skills-grid .skill {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
+    height: 100%;
 }
-  
+
+.expertise-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.skills-container .skills-grid .skill p {
+    flex: 1;
+}
+
 .chip {
     color: rgb(39, 40, 34) !important;
     background-color: white !important;

@@ -1,8 +1,11 @@
 import React from "react";
 import '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faPython, faDocker } from '@fortawesome/free-brands-svg-icons';
 import Chip from '@mui/material/Chip';
+import advokateDesk from '../assets/images/AdvokateDesk.png';
+import deployments from '../assets/images/deployments.png';
+import pvdeveloper from '../assets/images/pvdeveloper.png';
 import '../assets/styles/Expertise.scss';
 
 const labelsFirst = [
@@ -11,6 +14,7 @@ const labelsFirst = [
     "JavaScript",
     "HTML5",
     "CSS3",
+    "Redux",
     "SASS",
     "Node.js",
     "Express.js",
@@ -25,9 +29,6 @@ const labelsSecond = [
     "DigitalOcean",
     "AWS SES",
     "Docker",
-    "Nginx",
-    "PM2",
-    "GitHub Actions",
     "Git",
     "GitHub",
     "CI/CD",
@@ -50,6 +51,7 @@ function Expertise() {
             <h1>Expertise</h1>
             <div className="skills-grid">
                 <div className="skill">
+                    <img src={advokateDesk} alt="Full-stack work preview" className="expertise-image" />
                     <FontAwesomeIcon icon={faReact} size="3x"/>
                     <h3>Full‑Stack MERN Development</h3>
                     <p>
@@ -66,6 +68,7 @@ function Expertise() {
                 </div>
 
                 <div className="skill">
+                    <img src={deployments} alt="Deployment and DevOps preview" className="expertise-image" />
                     <FontAwesomeIcon icon={faDocker} size="3x"/>
                     <h3>Deployment & DevOps</h3>
                     <p>
@@ -82,6 +85,7 @@ function Expertise() {
                 </div>
 
                 <div className="skill">
+                    <img src={pvdeveloper} alt="AI and Python preview" className="expertise-image" />
                     <FontAwesomeIcon icon={faPython} size="3x"/>
                     <h3>AI, Python & Simulation</h3>
                     <p>

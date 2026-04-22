@@ -4,6 +4,12 @@ import pysimverse from '../assets/images/pysimverse.png';
 import pvdeveloper from '../assets/images/pvdeveloper.png';
 import pysimverseLms from '../assets/images/Lms.png';
 import lmsAdmin from '../assets/images/lms-admin.png';
+import advokateDesk from '../assets/images/AdvokateDesk.png';
+import bilingual from '../assets/images/Bilingual.png';
+import penalCodes from '../assets/images/PenalCodes.png';
+import statutes from '../assets/images/Statutes.png';
+import knowbaseAi from '../assets/images/knowbaseAi.png';
+import lawyers from '../assets/images/lawyers.png';
 import '../assets/styles/Project.scss';
 
 function Project() {
@@ -58,6 +64,48 @@ function Project() {
                 </button>
                 <h2>PySimverse LMS Admin Panel</h2>
                 <p>Developed the admin side of the LMS to manage users, courses, and course content with a centralized dashboard for platform operations.</p>
+            </div>
+            <div className="project">
+                <button className="project-image-btn" type="button" onClick={() => openPreview(advokateDesk, 'Advokate Desk preview')}>
+                    <img src={advokateDesk} className="zoom" alt="Advokate Desk thumbnail" width="100%"/>
+                </button>
+                <h2>Advokate Desk</h2>
+                <p>Legal productivity platform focused on organizing case workflows, references, and daily operational tasks for law professionals.</p>
+            </div>
+            <div className="project">
+                <button className="project-image-btn" type="button" onClick={() => openPreview(knowbaseAi, 'Knowbase AI preview')}>
+                    <img src={knowbaseAi} className="zoom" alt="Knowbase AI thumbnail" width="100%"/>
+                </button>
+                <h2>Knowbase AI</h2>
+                <p>AI-assisted knowledge base experience to help users quickly retrieve, summarize, and understand domain-specific information.</p>
+            </div>
+            <div className="project">
+                <button className="project-image-btn" type="button" onClick={() => openPreview(bilingual, 'Bilingual assistant preview')}>
+                    <img src={bilingual} className="zoom" alt="Bilingual assistant thumbnail" width="100%"/>
+                </button>
+                <h2>Bilingual Assistant</h2>
+                <p>Bilingual user experience for legal and knowledge workflows, making key information easier to access across multiple languages.</p>
+            </div>
+            <div className="project">
+                <button className="project-image-btn" type="button" onClick={() => openPreview(statutes, 'Statutes explorer preview')}>
+                    <img src={statutes} className="zoom" alt="Statutes explorer thumbnail" width="100%"/>
+                </button>
+                <h2>Statutes Explorer</h2>
+                <p>Structured statutes browsing interface designed to speed up legal research and improve discoverability of relevant provisions.</p>
+            </div>
+            <div className="project">
+                <button className="project-image-btn" type="button" onClick={() => openPreview(penalCodes, 'Penal codes explorer preview')}>
+                    <img src={penalCodes} className="zoom" alt="Penal codes explorer thumbnail" width="100%"/>
+                </button>
+                <h2>Penal Codes Explorer</h2>
+                <p>Focused legal reference module for navigating penal code content with clearer categorization and faster lookup patterns.</p>
+            </div>
+            <div className="project">
+                <button className="project-image-btn" type="button" onClick={() => openPreview(lawyers, 'Lawyers module preview')}>
+                    <img src={lawyers} className="zoom" alt="Lawyers module thumbnail" width="100%"/>
+                </button>
+                <h2>Lawyers Module</h2>
+                <p>Lawyer-centric feature area supporting profile visibility, legal context access, and day-to-day professional workflows.</p>
             </div>
         </div>
         {previewImage && (
