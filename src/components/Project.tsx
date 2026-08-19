@@ -1,128 +1,147 @@
 import React, { useState } from "react";
-import pyvisual from '../assets/images/pyvisual.png';
-import pysimverse from '../assets/images/pysimverse.png';
-import pvdeveloper from '../assets/images/pvdeveloper.png';
-import pysimverseLms from '../assets/images/Lms.png';
-import lmsAdmin from '../assets/images/lms-admin.png';
-import advokateDesk from '../assets/images/AdvokateDesk.png';
-import bilingual from '../assets/images/Bilingual.png';
-import penalCodes from '../assets/images/PenalCodes.png';
-import statutes from '../assets/images/Statutes.png';
-import knowbaseAi from '../assets/images/knowbaseAi.png';
-import lawyers from '../assets/images/lawyers.png';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import SectionHeader from './SectionHeader';
 import '../assets/styles/Project.scss';
+import {
+  projects,
+  projectCategories,
+  ProjectCategory,
+  Project as ProjectType,
+} from '../data/projects';
+
+function ProjectCard({
+  project,
+  onPreview,
+  featured = false,
+  featuredHero = false,
+}: {
+  project: ProjectType;
+  onPreview: (image: string, alt: string) => void;
+  featured?: boolean;
+  featuredHero?: boolean;
+}) {
+  const title = project.url ? (
+    <a href={project.url} target="_blank" rel="noreferrer">
+      <h2>{project.title} <OpenInNewIcon className="external-icon" /></h2>
+    </a>
+  ) : (
+    <h2>{project.title}</h2>
+  );
+
+  return (
+    <article className={`project${featured ? ' project--featured' : ''}${featuredHero ? ' project--featured-hero' : ''}`}>
+      <button
+        className="project-image-btn"
+        type="button"
+        onClick={() => onPreview(project.image, `${project.title} preview`)}
+        aria-label={`Preview ${project.title}`}
+      >
+        <img src={project.image} className="zoom" alt={`${project.title} thumbnail`} />
+      </button>
+      {title}
+      <p>{project.description}</p>
+      <div className="project-tags">
+        {project.tags.map((tag) => (
+          <span key={tag} className="project-tag">{tag}</span>
+        ))}
+      </div>
+    </article>
+  );
+}
 
 function Project() {
-    const [previewImage, setPreviewImage] = useState<string | null>(null);
-    const [previewAlt, setPreviewAlt] = useState<string>('');
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [previewAlt, setPreviewAlt] = useState<string>('');
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
 
-    const openPreview = (image: string, alt: string) => {
-        setPreviewImage(image);
-        setPreviewAlt(alt);
-    };
+  const featuredProjects = projects.filter((p) => p.featured);
+  const filteredProjects =
+    activeCategory === 'all'
+      ? projects.filter((p) => !p.featured)
+      : projects.filter((p) => p.category === activeCategory && !p.featured);
 
-    const closePreview = () => {
-        setPreviewImage(null);
-        setPreviewAlt('');
-    };
+  const openPreview = (image: string, alt: string) => {
+    setPreviewImage(image);
+    setPreviewAlt(alt);
+  };
 
-    return(
+  const closePreview = () => {
+    setPreviewImage(null);
+    setPreviewAlt('');
+  };
+
+  return (
     <div className="projects-container" id="projects">
-        <h1>Personal Projects</h1>
-        <div className="projects-grid">
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(pyvisual, 'PyVisual preview')}>
-                    <img src={pyvisual} className="zoom" alt="PyVisual thumbnail" width="100%"/>
-                </button>
-                <a href="https://pyvisual.co" target="_blank" rel="noreferrer"><h2>PyVisual</h2></a>
-                <p>Python GUI drag‑and‑drop builder. Create UI visually and generate clean Python code. Integrated with an AI agent (PV Developer) to author Python logic directly inside PyVisual.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(pysimverse, 'PySimverse preview')}>
-                    <img src={pysimverse} className="zoom" alt="PySimVerse thumbnail" width="100%"/>
-                </button>
-                <a href="https://pysimverse.com" target="_blank" rel="noreferrer"><h2>PySimverse</h2></a>
-                <p>Unity‑based Python drone simulation environment. Built for rapid prototyping and testing of autonomous behaviors and control algorithms.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(pvdeveloper, 'PV Developer preview')}>
-                    <img src={pvdeveloper} className="zoom" alt="PV Developer thumbnail" width="100%"/>
-                </button>
-                <h2>PV Developer</h2>
-                <p>AI agent inside PyVisual that writes Python logic code from prompts, speeding up UI-to-logic development and automating repetitive coding tasks.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(pysimverseLms, 'PySimverse LMS preview')}>
-                    <img src={pysimverseLms} className="zoom" alt="PySimVerse LMS thumbnail" width="100%"/>
-                </button>
-                <h2>PySimverse LMS</h2>
-                <p>Built a complete LMS for PySimVerse where users can watch tutorials and video lessons, enroll in courses, and track their learning progress from start to completion.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(lmsAdmin, 'PySimverse LMS admin preview')}>
-                    <img src={lmsAdmin} className="zoom" alt="PySimVerse LMS admin dashboard thumbnail" width="100%"/>
-                </button>
-                <h2>PySimverse LMS Admin Panel</h2>
-                <p>Developed the admin side of the LMS to manage users, courses, and course content with a centralized dashboard for platform operations.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(advokateDesk, 'Advokate Desk preview')}>
-                    <img src={advokateDesk} className="zoom" alt="Advokate Desk thumbnail" width="100%"/>
-                </button>
-                <h2>Advokate Desk</h2>
-                <p>Legal productivity platform focused on organizing case workflows, references, and daily operational tasks for law professionals.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(knowbaseAi, 'Knowbase AI preview')}>
-                    <img src={knowbaseAi} className="zoom" alt="Knowbase AI thumbnail" width="100%"/>
-                </button>
-                <h2>Knowbase AI</h2>
-                <p>AI-assisted knowledge base experience to help users quickly retrieve, summarize, and understand domain-specific information.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(bilingual, 'Bilingual assistant preview')}>
-                    <img src={bilingual} className="zoom" alt="Bilingual assistant thumbnail" width="100%"/>
-                </button>
-                <h2>Bilingual Assistant</h2>
-                <p>Bilingual user experience for legal and knowledge workflows, making key information easier to access across multiple languages.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(statutes, 'Statutes explorer preview')}>
-                    <img src={statutes} className="zoom" alt="Statutes explorer thumbnail" width="100%"/>
-                </button>
-                <h2>Statutes Explorer</h2>
-                <p>Structured statutes browsing interface designed to speed up legal research and improve discoverability of relevant provisions.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(penalCodes, 'Penal codes explorer preview')}>
-                    <img src={penalCodes} className="zoom" alt="Penal codes explorer thumbnail" width="100%"/>
-                </button>
-                <h2>Penal Codes Explorer</h2>
-                <p>Focused legal reference module for navigating penal code content with clearer categorization and faster lookup patterns.</p>
-            </div>
-            <div className="project">
-                <button className="project-image-btn" type="button" onClick={() => openPreview(lawyers, 'Lawyers module preview')}>
-                    <img src={lawyers} className="zoom" alt="Lawyers module thumbnail" width="100%"/>
-                </button>
-                <h2>Lawyers Module</h2>
-                <p>Lawyer-centric feature area supporting profile visibility, legal context access, and day-to-day professional workflows.</p>
-            </div>
+      <SectionHeader
+        eyebrow="Work"
+        title="Projects"
+        subtitle="From AI-powered developer tools to full-scale legal platforms — here's what I've shipped."
+      />
+
+      <section className="featured-section">
+        <h2>Featured Work</h2>
+        <div className="projects-grid featured-grid">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onPreview={openPreview}
+              featured
+              featuredHero={index === 0}
+            />
+          ))}
         </div>
-        {previewImage && (
-            <div className="image-lightbox" onClick={closePreview} role="presentation">
-                <button className="lightbox-close" type="button" onClick={closePreview} aria-label="Close image preview">
-                    x
-                </button>
-                <img
-                    src={previewImage}
-                    alt={previewAlt}
-                    className="lightbox-image"
-                    onClick={(e) => e.stopPropagation()}
-                />
-            </div>
-        )}
+      </section>
+
+      <section className="all-projects-section">
+        <div className="projects-header">
+          <h2>All Projects</h2>
+          <div className="category-filters" role="tablist" aria-label="Filter projects by category">
+            {projectCategories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === cat.id}
+                className={`category-btn${activeCategory === cat.id ? ' active' : ''}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="projects-grid">
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onPreview={openPreview}
+            />
+          ))}
+        </div>
+      </section>
+
+      {previewImage && (
+        <div className="image-lightbox" onClick={closePreview} role="presentation">
+          <button
+            className="lightbox-close"
+            type="button"
+            onClick={closePreview}
+            aria-label="Close image preview"
+          >
+            ×
+          </button>
+          <img
+            src={previewImage}
+            alt={previewAlt}
+            className="lightbox-image"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
-    );
+  );
 }
 
 export default Project;

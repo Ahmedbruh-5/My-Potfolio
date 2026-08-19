@@ -1,14 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import '../assets/styles/Contact.scss';
-// import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import EmailIcon from '@mui/icons-material/Email';
 import TextField from '@mui/material/TextField';
-import resumePdf from '../assets/resume/Ahmed_Aamir.pdf';
+import resumePdf from '../assets/resume/Ahmed_Aamir_Resume.pdf';
+import SectionHeader from './SectionHeader';
+import { CONTACT_EMAIL, LINKEDIN_URL } from '../constants/contact';
 
 function Contact() {
-
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string>('');
@@ -16,51 +17,75 @@ function Contact() {
   const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [messageError, setMessageError] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
-  const form = useRef();
-
-  const sendEmail = (e: any) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    setNameError(name === '');
-    setEmailError(email === '');
-    setMessageError(message === '');
+    const hasNameError = name.trim() === '';
+    const hasEmailError = email.trim() === '';
+    const hasMessageError = message.trim() === '';
 
-    /* Uncomment below if you want to enable the emailJS */
+    setNameError(hasNameError);
+    setEmailError(hasEmailError);
+    setMessageError(hasMessageError);
 
-    // if (name !== '' && email !== '' && message !== '') {
-    //   var templateParams = {
-    //     name: name,
-    //     email: email,
-    //     message: message
-    //   };
+    if (hasNameError || hasEmailError || hasMessageError) {
+      return;
+    }
 
-    //   console.log(templateParams);
-    //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error);
-    //     },
-    //   );
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // }
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name.trim()}`);
+    const body = encodeURIComponent(
+      `${message.trim()}\n\n---\nFrom: ${name.trim()}\nReply to: ${email.trim()}`
+    );
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+    setSubmitted(true);
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
     <div id="contact">
       <div className="items-container">
         <div className="contact_wrapper">
-          <h1>Contact Me</h1>
-          <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
-          <div className="contact-actions">
+          <SectionHeader
+            eyebrow="Contact"
+            title="Get in touch"
+            subtitle="Got a project waiting to be realized? Let's collaborate and make it happen!"
+          />
+
+          <div className="contact-direct">
             <Button
               className="resume-primary"
               size="large"
               variant="contained"
+              component="a"
+              href={`mailto:${CONTACT_EMAIL}`}
+              startIcon={<EmailIcon />}
+            >
+              {CONTACT_EMAIL}
+            </Button>
+            <Button
+              className="resume-secondary"
+              size="large"
+              variant="outlined"
+              component="a"
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Connect on LinkedIn
+            </Button>
+          </div>
+
+          <div className="contact-actions">
+            <Button
+              className="resume-secondary"
+              size="large"
+              variant="outlined"
               component="a"
               href={resumePdf}
               download
@@ -81,56 +106,58 @@ function Contact() {
               View Resume
             </Button>
           </div>
+
+          {submitted && (
+            <p className="contact-success" role="status">
+              Your email client should open shortly. If it doesn't, email me directly at{' '}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+            </p>
+          )}
+
           <Box
-            ref={form}
             component="form"
             noValidate
             autoComplete="off"
-            className='contact-form'
+            className="contact-form"
+            onSubmit={sendEmail}
           >
-            <div className='form-flex'>
+            <div className="form-flex">
               <TextField
                 required
-                id="outlined-required"
+                id="contact-name"
                 label="Your Name"
                 placeholder="What's your name?"
                 value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
+                onChange={(e) => setName(e.target.value)}
                 error={nameError}
-                helperText={nameError ? "Please enter your name" : ""}
+                helperText={nameError ? 'Please enter your name' : ''}
               />
               <TextField
                 required
-                id="outlined-required"
+                id="contact-email"
                 label="Email / Phone"
                 placeholder="How can I reach you?"
                 value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
                 error={emailError}
-                helperText={emailError ? "Please enter your email or phone number" : ""}
+                helperText={emailError ? 'Please enter your email or phone number' : ''}
               />
             </div>
             <TextField
               required
-              id="outlined-multiline-static"
+              id="contact-message"
               label="Message"
               placeholder="Send me any inquiries or questions"
               multiline
-              rows={10}
+              rows={8}
               className="body-form"
               value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
+              onChange={(e) => setMessage(e.target.value)}
               error={messageError}
-              helperText={messageError ? "Please enter the message" : ""}
+              helperText={messageError ? 'Please enter the message' : ''}
             />
-            <Button className="send-btn" variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
-              Send
+            <Button className="send-btn" variant="contained" type="submit" endIcon={<SendIcon />}>
+              Send Message
             </Button>
           </Box>
         </div>
