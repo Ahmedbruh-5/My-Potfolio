@@ -1,30 +1,23 @@
-import React from "react";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
-import '../assets/styles/Footer.scss';
-import { CONTACT_EMAIL, GITHUB_URL, LINKEDIN_URL } from '../constants/contact';
+import { site } from '../data/site';
 
-function Footer() {
+export function Footer() {
   return (
-    <footer>
-      <div className="footer-links">
-        <a href={GITHUB_URL} target="_blank" rel="noreferrer" aria-label="GitHub profile">
-          <GitHubIcon />
-        </a>
-        <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
-          <LinkedInIcon />
-        </a>
-        <a href={`mailto:${CONTACT_EMAIL}`} aria-label="Send email">
-          <EmailIcon />
+    <footer className="border-t border-border">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-5 py-8 sm:flex-row sm:items-center md:px-8">
+        <p className="font-mono text-xs text-muted">
+          © {new Date().getFullYear()} {site.name}. Built with care in PKT.
+        </p>
+        <a
+          href="#top"
+          className="font-mono text-xs text-accent hover:underline"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
+          Back to top
         </a>
       </div>
-      <p>Designed &amp; built by Ahmed Aamir</p>
-      <p className="footer-email">
-        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-      </p>
     </footer>
   );
 }
-
-export default Footer;
