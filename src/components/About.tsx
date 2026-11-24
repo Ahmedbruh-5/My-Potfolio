@@ -33,7 +33,7 @@ export function About() {
         <div>
           <Reveal>
             <h3 className="max-w-xl text-3xl font-semibold tracking-tight text-balance md:text-4xl">
-              From Gujranwala to shipping tools people{' '}
+              Based in Lahore, shipping tools people{' '}
               <span className="font-italic-serif text-accent-2">open every day.</span>
             </h3>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">{site.about}</p>

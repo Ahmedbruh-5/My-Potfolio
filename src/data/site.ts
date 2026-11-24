@@ -1,7 +1,7 @@
 export const site = {
   name: 'Ahmed Aamir',
   role: 'Full Stack MERN Developer',
-  location: 'Gujranwala, Pakistan',
+  location: 'Lahore, Pakistan',
   email: 'ahmedaamirgrw@gmail.com',
   github: 'https://github.com/Ahmedbruh-5',
   githubUser: 'Ahmedbruh-5',
@@ -12,7 +12,7 @@ export const site = {
   headlineEmphasized: 'actually use',
   valueProp:
     'Full Stack MERN developer building production tools, legal-tech platforms, and local-first apps — shipping fast with clear communication.',
-  about: `I'm Ahmed — a developer from Gujranwala who likes building things people can open, click, and ship. I'm currently a full-stack developer at CVZone (2024–present), where I rebuilt computervision.zone as a custom MERN learning platform, and I've also shipped production work at Softa Solutions. Alongside that I'm taking freelance clients and building my own tools: Pyvisual, Pysimverse, ClipForge, Flick, and Advokate Desk.`,
+  about: `I'm Ahmed — a full-stack developer based in Lahore (originally from Gujranwala) who likes building things people can open, click, and ship. I'm currently at CVZone (2024–present), where I rebuilt computervision.zone as a custom MERN learning platform, and I've also shipped production work at Softa Solutions. Alongside that I'm taking freelance clients and building my own tools: Pyvisual, Pysimverse, ClipForge, Flick, and Advokate Desk.`,
   timeline: [
     {
       org: 'Softa Solutions',
@@ -35,7 +35,7 @@ export const site = {
     },
   ],
   facts: [
-    { label: 'Based in', value: 'Gujranwala, PK' },
+    { label: 'Based in', value: 'Lahore, PK' },
     { label: 'Focus', value: 'Full-stack MERN + tools' },
     { label: 'Stack', value: 'React · Node · MongoDB' },
     { label: 'Status', value: 'Open to freelance' },
