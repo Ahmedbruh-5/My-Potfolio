@@ -132,6 +132,16 @@ export function Contact() {
                 <a href={site.linkedin} target="_blank" rel="noreferrer" className="hover:text-accent">
                   LinkedIn
                 </a>
+                <a href={site.resume} target="_blank" rel="noreferrer" className="hover:text-accent">
+                  View resume
+                </a>
+                <a
+                  href={site.resume}
+                  download="Ahmed_Aamir_Resume.pdf"
+                  className="hover:text-accent"
+                >
+                  Download resume
+                </a>
               </div>
             </div>
           </div>

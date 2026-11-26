@@ -68,6 +68,14 @@ export function Hero() {
             <MagneticButton href="#contact" variant="outline">
               Hire me
             </MagneticButton>
+            <MagneticButton
+              href={site.resume}
+              variant="ghost"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View resume
+            </MagneticButton>
           </motion.div>
         </div>
 

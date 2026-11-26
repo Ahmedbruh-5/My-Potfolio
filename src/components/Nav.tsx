@@ -62,6 +62,15 @@ export function Nav() {
             <span className="font-mono text-[11px] tabular-nums text-muted">{time} PKT</span>
           </div>
 
+          <a
+            href={site.resume}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden font-mono text-xs uppercase tracking-wider text-muted transition hover:text-text sm:inline"
+          >
+            Resume
+          </a>
+
           <MagneticButton href="#contact" className="!px-3 !py-2 text-xs sm:!px-4">
             Hire me
           </MagneticButton>
@@ -91,6 +100,15 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
+            <a
+              href={site.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="font-mono text-sm text-accent"
+              onClick={() => setOpen(false)}
+            >
+              Resume
+            </a>
           </div>
         </div>
       )}

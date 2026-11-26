@@ -6,6 +6,7 @@ export const site = {
   github: 'https://github.com/Ahmedbruh-5',
   githubUser: 'Ahmedbruh-5',
   linkedin: 'https://www.linkedin.com/in/ahmed-aamir1/',
+  resume: '/Ahmed_Aamir_Resume.pdf',
   yearsExperience: 2,
   education: 'BS Computer Science, GCU Faisalabad',
   status: 'Available for freelance',
